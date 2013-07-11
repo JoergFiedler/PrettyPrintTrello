@@ -136,12 +136,4 @@ describe('In TrelloPrettyPrint module', function () {
       expect(controller).toBeDefined();
     });
   });
-
-  describe("the filter 'initials'", function(){
-
-    it('should be defined', inject(function($filter) {
-      expect($filter('initials')).toBeDefined();
-    }));
-  });
-
 });
