@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Trello Authorization Page</title>
+  <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <style>
+    [ng\:cloak], [ng-cloak], .ng-cloak {
+      display: none;
+    }
+  </style>
+</head>
+<body data-ng-app="TrelloPrettyPrint" data-ng-controller="TrelloLoginController" data-ng-cloak>
+
+<div class="row">
+  <div class="span12 text-center">
+    <h1>Trello Pretty Print</h1>
+
+    <p class="small">The extension <strong>Trello Pretty Print</strong> uses Trello.</p>
+  </div>
+</div>
+<div class="row">
+  <div class="span1 offset5">
+    <button id="tpp-grant"
+            data-ng-class="{disabled: authorized==true}"
+            data-ng-click="grantAccess()"
+            class="btn btn-success btn-small">
+      Grant Access
+    </button>
+  </div>
+  <div class="span1">
+    <button id="tpp-revoke"
+            data-ng-class="{disabled: authorized==false}"
+            data-ng-click="revokeAccess()"
+            class="btn btn-warning btn-small">
+      Revoke Access
+    </button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.7/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="https://api.trello.com/1/client.js?key=1233a8a1ba23f867d725a94208738a76"></script>
+<script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="application.js"></script>
+</body>
+</html>

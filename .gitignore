@@ -1,0 +1,10 @@
+chrome-extension/application.js
+chrome-extension/index.html
+chrome-extension/callback.html
+components/
+coverage/
+node_modules/
+test/test_reports/
+.idea
+*.iml
+

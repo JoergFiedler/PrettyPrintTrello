@@ -1,0 +1,139 @@
+<!doctype html>
+<html data-ng-app="TrelloPrettyPrint" data-ng-csp="">
+<head>
+  <title>Trello Pretty Print</title>
+  <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <style>
+    [ng\:cloak], [ng-cloak], .ng-cloak {
+      display: none;
+    }
+  </style>
+  <base target="_blank">
+</head>
+<body data-ng-controller="ExtensionPopupController">
+
+<div style="width:500px; height:200px;">
+  <div data-ng-show="authorized==false">
+    <button class="btn btn-link" data-ng-click="authorize()">Not authorized! Want to get authorized?</button>
+  </div>
+
+  <div data-ng-view="app-view">
+
+  </div>
+
+  <script type="text/ng-template" id="/tpp-board.html">
+    <div data-ng-controller="BoardViewController">
+      <p>
+        <b>{{ itemsToPrint.length }}</b> cards marked for printing.
+        <a class="btn btn-mini"
+           data-ng-disabled="itemsToPrint.length==0"
+           data-ng-click="showPreview()">Preview</a>
+      </p>
+
+      <div data-ng-repeat="list in listsWithCards">
+        <div data-ng-controller="ListViewController">
+          <button class="btn btn-inverse btn-mini" data-ng-click="toggleShowHide()">Show/Hide</button>
+          <button class="btn btn-inverse btn-mini" data-ng-click="togglePrintAllNone()">All/None</button>
+          <h3 style="display: inline">{{list.name}}</h3>
+
+          <div data-ng-hide="hidden">
+            <div data-ng-controller="CardViewController" data-ng-repeat="card in list.cards">
+              <a class="btn btn-mini"
+                 data-ng-class="toBePrinted && 'btn-warning' || 'btn-success'"
+                 data-ng-click="togglePrintCard()">{{toBePrinted && 'Remove' || 'Add'}}</a>
+              <h4 style="display: inline;">IP-{{card.idShort}}: {{card.name}}</h4>
+
+              <p class="small">{{card.desc}}</p>
+
+                <span data-ng-init="loadMembers()"
+                      data-ng-show="card.members.length > 0">Owners: {{card.members | initials}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/ng-template" id="/tpp-card.html">
+    <div data-ng-controller="CardViewController">
+      <p>
+        <b>{{ itemsToPrint.length }}</b> cards marked for printing.
+        <a class="btn btn-mini"
+           data-ng-disabled="itemsToPrint.length==0"
+           data-ng-click="showPreview()">Preview</a>
+      </p>
+      <h3 data-ng-show="card">IP-{{card.idShort}}: {{card.name}}</h3>
+      <span data-ng-init="loadMembers()"
+            data-ng-show="card.members.length > 0">Owners: {{card.members | initials}}</span>
+
+      <div data-ng-show="card.checklists"
+           data-ng-repeat="checklist in card.checklists"
+           data-ng-controller="CheckListViewController">
+
+        <button class="btn btn-inverse btn-mini" data-ng-click="toggleShowHide()">Show/Hide</button>
+        <button class="btn btn-inverse btn-mini" data-ng-click="togglePrintAllNone()">All/None</button>
+        <h4 style="display: inline;">{{checklist.name}}</h4>
+
+        <div data-ng-hide="hidden">
+          <div data-ng-repeat="checkItem in checklist.checkItems"
+               data-ng-init="checkItem.card = card"
+               data-ng-controller="CheckListItemViewController">
+            <a class="btn btn-mini"
+               data-ng-class="toBePrinted && 'btn-warning' || 'btn-success'"
+               data-ng-click="togglePrintCheckListItem()">{{toBePrinted && 'Remove' || 'Add'}}</a>
+
+            <p style="display: inline;">
+              {{checkItem.name}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/ng-template" id="/tpp-board-preview.html">
+    <a class="btn btn-link" data-ng-click="print()">Print'em All</a>
+
+    <div id="tpp-print-frame">
+      <div data-ng-repeat="card in itemsToPrint">
+        <div id="tpp-card" style="border: 1px solid rgb(128,128,128); float;left; margin: 20px">
+          <div id="tpp-card-content" style="margin: 10px;">
+            <h1>IP-{{ card.idShort }} - {{ card.name }}</h1>
+
+            <p>
+            <pre>{{ card.desc }}</pre>
+            </p>
+            <span>Owner: {{ card.members | initials }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/ng-template" id="/tpp-card-preview.html">
+    <a class="btn btn-link" data-ng-click="print()">Print'em All</a>
+
+    <div id="tpp-print-frame">
+      <div data-ng-repeat="checkItem in itemsToPrint">
+        <div style="border: 1px solid rgb(128,128,128); float;left; margin:20px">
+          <div style="margin: 10px;">
+            <h1>IP-{{ checkItem.card.idShort }} - {{ checkItem.card.name }}</h1>
+
+            <pre>{{ checkItem.name }}</pre>
+            <span>Owner: {{ checkItem.card.members | initials }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.7/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sugar/1.3.9/sugar.min.js"></script>
+<script src="https://api.trello.com/1/client.js?key=1233a8a1ba23f867d725a94208738a76"></script>
+<script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="application.js"></script>
+</body>
+</html>
+
