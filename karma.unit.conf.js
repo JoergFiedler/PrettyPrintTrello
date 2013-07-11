@@ -14,6 +14,7 @@ files = [
   // app code
   'app/script/app.js',
   'app/script/service/*.js',
+  'app/script/filters/*.js',
   'app/script/controller/*.js',
 
   // unit tests

@@ -4,6 +4,18 @@ describe('In TrelloPrettyPrint module', function () {
     angular.mock.module('TrelloPrettyPrint')
   });
 
+  describe('the service: googleExtensionApiService', function () {
+    var service;
+
+    beforeEach(inject(function (googleExtensionApiService) {
+      service = googleExtensionApiService;
+    }));
+
+    it('should be defined', function () {
+      expect(service).toBeDefined();
+    });
+  });
+
   describe('the service: TrelloService', function () {
     var service;
 
@@ -125,15 +137,11 @@ describe('In TrelloPrettyPrint module', function () {
     });
   });
 
-  describe('the service: googleExtensionApiService', function () {
-    var service;
+  describe("the filter 'initials'", function(){
 
-    beforeEach(inject(function (googleExtensionApiService) {
-      service = googleExtensionApiService;
+    it('should be defined', inject(function($filter) {
+      expect($filter('initials')).toBeDefined();
     }));
-
-    it('should be defined', function () {
-      expect(service).toBeDefined();
-    });
   });
+
 });

@@ -13,13 +13,6 @@
 
         otherwise({redirectTo: '/'});
     })
-    .filter('initials', function() {
-      return function(members) {
-        return members.map(function returnInitials(member) {
-          return member.initials;
-        }).join('/');
-      }
-    })
     .value('options', {
       callbackUrl: './../callback.html'
     })
