@@ -26,10 +26,6 @@ describe('In CardViewController', function() {
     it('should a function be bound to event tpp:ids', function() {
       expect(scope.$on).toHaveBeenCalledWith('tpp:card:ids', jasmine.any(Function));
     });
-
-    it('should a function be bound to scope variable loadMembers', function() {
-      expect(scope.loadMembers).toEqual(jasmine.any(Function));
-    });
   });
 
   describe('on event tpp:ids', function() {

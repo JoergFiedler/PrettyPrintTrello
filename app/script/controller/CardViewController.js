@@ -25,11 +25,13 @@ angular.module('TrelloPrettyPrint').controller('CardViewController', function Ca
     }
   }
 
+  function createQrCodeUrl() {
+    $scope.card.qrCodeUrl= 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl='+$scope.card.shortUrl;
+  }
+
   function onSuccessLoadCard(card) {
     $scope.$apply(function() {
       $scope.card = card;
-      loadMembers();
-      loadCheckLists();
     });
   }
 
@@ -70,9 +72,12 @@ angular.module('TrelloPrettyPrint').controller('CardViewController', function Ca
   $scope.showPreview = showPreview;
 
   $scope.togglePrintCard = togglePrintCard;
-  $scope.loadMembers = loadMembers;
 
   $scope.$on("tpp:card:ids", loadCard);
   $scope.$on("tpp:list:print:add", printCard);
   $scope.$on("tpp:list:print:remove", printCard);
+
+  $scope.$watch("card", loadMembers);
+  $scope.$watch("card", loadCheckLists);
+  $scope.$watch("card", createQrCodeUrl);
 });

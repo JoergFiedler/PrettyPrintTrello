@@ -45,8 +45,7 @@
 
               <p class="small">{{card.desc}}</p>
 
-                <span data-ng-init="loadMembers()"
-                      data-ng-show="card.members.length > 0">Owners: {{card.members | initials}}</span>
+                <span data-ng-show="card.members.length > 0">Owners: {{card.members | initials}}</span>
             </div>
           </div>
         </div>
@@ -63,8 +62,7 @@
            data-ng-click="showPreview()">Preview</a>
       </p>
       <h3 data-ng-show="card">IP-{{card.idShort}}: {{card.name}}</h3>
-      <span data-ng-init="loadMembers()"
-            data-ng-show="card.members.length > 0">Owners: {{card.members | initials}}</span>
+      <span data-ng-show="card.members.length > 0">Owners: {{card.members | initials}}</span>
 
       <div data-ng-show="card.checklists"
            data-ng-repeat="checklist in card.checklists"
@@ -98,11 +96,14 @@
       <div data-ng-repeat="card in itemsToPrint">
         <div id="tpp-card" style="border: 1px solid rgb(128,128,128); float;left; margin: 20px">
           <div id="tpp-card-content" style="margin: 10px;">
-            <h1>IP-{{ card.idShort }} - {{ card.name }}</h1>
+            <h1>IP-{{ card.idShort }}: {{ card.name }}</h1>
 
-            <p>
+            <div>
+              <img data-ng-src="{{ card.qrCodeUrl }}" height="100" width="100"/>
+            </div>
+
+
             <pre>{{ card.desc }}</pre>
-            </p>
             <span>Owner: {{ card.members | initials }}</span>
           </div>
         </div>
@@ -117,7 +118,11 @@
       <div data-ng-repeat="checkItem in itemsToPrint">
         <div style="border: 1px solid rgb(128,128,128); float;left; margin:20px">
           <div style="margin: 10px;">
-            <h1>IP-{{ checkItem.card.idShort }} - {{ checkItem.card.name }}</h1>
+            <h1>IP-{{ checkItem.card.idShort }}: {{ checkItem.card.name }}</h1>
+
+            <div>
+              <img data-ng-src="{{ checkItem.card.qrCodeUrl }}" height="100" width="100"/>
+            </div>
 
             <pre>{{ checkItem.name }}</pre>
             <span>Owner: {{ checkItem.card.members | initials }}</span>
