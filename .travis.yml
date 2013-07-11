@@ -3,4 +3,5 @@ node_js:
   - "0.10.x"
 before_script:
   - npm install -g grunt-cli
-
+after_install:
+  - node_modules/bower/bin/bower install
