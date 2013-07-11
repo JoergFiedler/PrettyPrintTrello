@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/murdochjohn/TrelloPrettyPrint.png?branch=master)](https://travis-ci.org/murdochjohn/TrelloPrettyPrint)
+
 TrelloPrettyPrint
 =================
 
