@@ -3,19 +3,23 @@ describe('In BoardViewController', function() {
   var rootScope,
     scope,
     controller,
+    location,
     trelloService;
 
   beforeEach(function createMocks() {
     angular.mock.module('TrelloPrettyPrint');
     trelloService = jasmine.createSpyObj('trelloService', ['loadListsWithCards' ]);
+    location = jasmine.createSpyObj('location', ['path' ]);
   });
 
   beforeEach(inject(function initializeController($controller, $rootScope) {
     rootScope = $rootScope;
     scope = $rootScope.$new();
     spyOn(scope, '$on').andCallThrough();
+
     controller = $controller("BoardViewController", {
       $scope: scope,
+      $location: location,
       trelloService: trelloService
     })
   }));
@@ -24,6 +28,18 @@ describe('In BoardViewController', function() {
 
     it('should a function be bound to event tpp:ids', function() {
       expect(scope.$on).toHaveBeenCalledWith('tpp:board:ids', jasmine.any(Function));
+    });
+
+    it('should a function be bound to showPreview', function() {
+      expect(scope.showPreview).toBeDefined();
+    });
+  });
+  
+  describe("function 'showPreview'", function(){
+    it("should change the location to '/board/preview'", function() {
+      scope.showPreview();
+
+      expect(location.path).toHaveBeenCalledWith('/board/preview');
     });
   });
 
