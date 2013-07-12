@@ -16,7 +16,7 @@ Build It
 --------
     
     npm install
-    bower install
+    bower install (node_modules/bower/bin/bower install)
     grunt all
 
 Use It
