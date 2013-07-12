@@ -16,14 +16,14 @@ Build It
 --------
     
     npm install
-    bower install
+    node_modules/bower/bin/bower install
     grunt all
 
 Use It
 ------
-Add folder ``chrome-extension`` as unpacked extension to your browser. A new icon will
+Add folder ``chrome-extension`` as an unpacked extension. A new icon will
 appear next to your location bar. Go to your Trello board and hit it!
 
 There are 2 modes:
-- Print cards from lists, if you hit the button while your board is visisble 
-- Print check items from cards, if you hit the button while a card is open
+- Print cards from lists, when you hit the button while your board is visible
+- Print check items from cards, when you hit the button while a card is open
