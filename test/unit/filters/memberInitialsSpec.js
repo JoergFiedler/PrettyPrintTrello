@@ -18,4 +18,16 @@ describe("Filter 'initials'", function(){
 
     expect(initials).toBe('AB/CD');
   });
+
+  it("should return an empty string if an array with invalid properties is given", function() {
+    var initials = filter([ { ini : 'AB'}, { ini : 'CD'} ]);
+
+    expect(initials).toBe('');
+  });
+
+  it("should return an empty string if an array with invalid properties is given", function() {
+    var initials = filter([ { initials : ''}, { initials : 'CD'} ]);
+
+    expect(initials).toBe('CD');
+  });
 });
