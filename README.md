@@ -21,5 +21,9 @@ Build It
 
 Use It
 ------
-Add folder ``chrome-extension`` as unpacked extension to your browser. A new icons will
-appear next to your location bar. Hit it!
+Add folder ``chrome-extension`` as unpacked extension to your browser. A new icon will
+appear next to your location bar. Go to your Trello board and hit it!
+
+There are 2 modes:
+- Print cards from lists, if you hit the button while your board is visisble 
+- Print check items from cards, if you hit the button while a card is open
