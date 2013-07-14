@@ -5,9 +5,9 @@ files = [
   JASMINE_ADAPTER,
 
   // 3rd party
+  'components/jquery/jquery.js',
   'components/angular/angular.js',
   'components/angular-mocks/angular-mocks.js',
-  'components/jquery/jquery.js',
   'components/sugar/release/sugar-full.development.js',
   'test/lib/Trello.js',
 

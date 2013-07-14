@@ -11,7 +11,9 @@ describe('Extension Popup Controller', function() {
   beforeEach(function createMocks() {
     angular.mock.module('TrelloPrettyPrint');
     trelloService = jasmine.createSpyObj('trelloService', ['isAuthorized', 'authorize']);
-    googleExtensionApiService = jasmine.createSpyObj('googleExtensionApiService', ['openInNewTab', 'getActiveTabUrl']);
+    googleExtensionApiService = jasmine.createSpyObj(
+      'googleExtensionApiService', ['openInNewTab', 'getActiveTabUrl', 'print']
+    );
     location = jasmine.createSpyObj('location', ['path']);
     options = {callbackUrl: 'anyCallbackUrl'};
   });
@@ -145,4 +147,13 @@ describe('Extension Popup Controller', function() {
       expect(scope.itemsToPrint.length).toEqual(0);
     }));
   });
+
+  describe("function 'print'", function() {
+    it('should call googleExtensionApiService', function() {
+      scope.print();
+
+      expect(googleExtensionApiService.print).toHaveBeenCalled();
+    });
+  });
+
 });
