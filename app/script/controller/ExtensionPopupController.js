@@ -31,12 +31,12 @@ angular.module('TrelloPrettyPrint').controller('ExtensionPopupController', funct
     }
   }
 
-  function addToItemsToPrint(event, card) {
-    $scope.itemsToPrint.add(card);
+  function addToItemsToPrint(event, item) {
+    $scope.itemsToPrint.add(item);
   }
 
-  function removeFromItemsToPrint(event, card) {
-    $scope.itemsToPrint.remove(card);
+  function removeFromItemsToPrint(event, item) {
+    $scope.itemsToPrint.remove(item);
   }
 
   function onActiveTabUrl(url) {
@@ -46,10 +46,7 @@ angular.module('TrelloPrettyPrint').controller('ExtensionPopupController', funct
   }
 
   function print() {
-    var w = $window.open("about:blank");
-    w.document.write(angular.element('#tpp-print-frame').html());
-    w.document.close();
-    w.print();
+    googleExtensionApiService.print(angular.element('#tpp-print-frame').html());
   }
 
   googleExtensionApiService.getActiveTabUrl(onActiveTabUrl);

@@ -1,10 +1,17 @@
-angular.module('TrelloPrettyPrint').service('googleExtensionApiService', function googleExtensionApiService($location) {
+angular.module('TrelloPrettyPrint').service('googleExtensionApiService', function googleExtensionApiService($window, $location) {
   "use strict";
 
   function openInNewTab(url) {
     chrome.tabs.create({
       url: $location.path() + url
     });
+  }
+
+  function print(html) {
+    var window = $window.open("about:blank");
+    window.document.write(html);
+    window.document.close();
+    window.print();
   }
 
   function getActiveTabUrl(callback) {
@@ -14,7 +21,8 @@ angular.module('TrelloPrettyPrint').service('googleExtensionApiService', functio
   }
 
   return {
-    openInNewTab: openInNewTab,
-    getActiveTabUrl: getActiveTabUrl
+    openInNewTab:    openInNewTab,
+    getActiveTabUrl: getActiveTabUrl,
+    print: print
   }
 });

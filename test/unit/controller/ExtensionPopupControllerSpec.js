@@ -1,4 +1,4 @@
-describe('In ExtensionPopupController', function() {
+describe('Extension Popup Controller', function() {
 
   var scope,
     controller,
@@ -30,24 +30,28 @@ describe('In ExtensionPopupController', function() {
     })
   }));
 
-  describe('after initialization', function() {
+  describe('initialization', function() {
 
-    it('should scope property authorized to be false per default', function() {
+    it('should set scope property authorized to false per default', function() {
       expect(scope.authorized).toBeFalsy();
     });
 
-    it('should scope property activeTabUrl initialized by googleExtensionApiService', function() {
+    it('should initialize scope property activeTabUrl by googleExtensionApiService', function() {
       googleExtensionApiService.getActiveTabUrl.mostRecentCall.args[0]('any-url');
 
       expect(googleExtensionApiService.getActiveTabUrl).toHaveBeenCalledWith(jasmine.any(Function));
       expect(scope.activeTabUrl).toBe('any-url');
     });
 
-    it('should scope authorize set to a function', function() {
+    it('should set scope property authorize to a function', function() {
       expect(scope.authorize).toBeDefined();
     });
 
-    it('should scope $watch have be called to register for activeTabUrl changes', function() {
+    it('should set scope property print to a function', function() {
+      expect(scope.print).toBeDefined();
+    });
+
+    it('should register scope a function to watch activeTabUrl changes', function() {
       expect(scope.$watch).toHaveBeenCalledWith('activeTabUrl', jasmine.any(Function));
     });
   });
@@ -105,5 +109,40 @@ describe('In ExtensionPopupController', function() {
       expect(location.path).wasNotCalled();
     });
   });
+  
+  describe("on events 'ttp:*:print:*'", function(){
 
+    var item;
+
+    beforeEach(function(){
+      item ={ key: "value" };
+      scope.itemsToPrint = [];
+    });
+
+    it("should add event data to list of items to print on event 'ttp:card:print:add'", inject(function($rootScope) {
+      $rootScope.$broadcast('ttp:card:print:add', item);
+
+      expect(scope.itemsToPrint[0]).toEqual(item);
+    }));
+
+    it("should remove event data from list of items to print on event 'ttp:card:print:remove'", inject(function($rootScope) {
+      scope.itemsToPrint.push(item);
+      $rootScope.$broadcast('ttp:card:print:remove', item);
+
+      expect(scope.itemsToPrint.length).toEqual(0);
+    }));
+
+    it("should add event data to list of items to print on event 'tpp:checklistitem:print:add'", inject(function($rootScope) {
+      $rootScope.$broadcast('tpp:checklistitem:print:add', item);
+
+      expect(scope.itemsToPrint[0]).toEqual(item);
+    }));
+
+    it("should remove event data from list of items to print on event 'tpp:checklistitem:print:remove'", inject(function($rootScope) {
+      scope.itemsToPrint.push(item);
+      $rootScope.$broadcast('tpp:checklistitem:print:remove', item);
+
+      expect(scope.itemsToPrint.length).toEqual(0);
+    }));
+  });
 });
