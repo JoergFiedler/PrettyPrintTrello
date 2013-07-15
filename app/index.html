@@ -12,7 +12,7 @@
 </head>
 <body data-ng-controller="ExtensionPopupController">
 
-<div style="width:500px; height:200px;">
+<div style="width:650px; height:200px;">
   <div data-ng-show="authorized==false">
     <button class="btn btn-link" data-ng-click="authorize()">Not authorized! Want to get authorized?</button>
   </div>
@@ -45,7 +45,7 @@
 
               <p class="small">{{card.desc}}</p>
 
-                <span data-ng-show="card.members.length > 0">Owners: {{card.members | initials}}</span>
+              <span data-ng-show="card.members.length > 0">Owners: {{card.members | initials}}</span>
             </div>
           </div>
         </div>
@@ -61,6 +61,7 @@
            data-ng-disabled="itemsToPrint.length==0"
            data-ng-click="showPreview()">Preview</a>
       </p>
+
       <h3 data-ng-show="card">IP-{{card.idShort}}: {{card.name}}</h3>
       <span data-ng-show="card.members.length > 0">Owners: {{card.members | initials}}</span>
 
@@ -94,17 +95,21 @@
 
     <div id="tpp-print-frame">
       <div data-ng-repeat="card in itemsToPrint">
-        <div id="tpp-card" style="border: 1px solid rgb(128,128,128); float;left; margin: 20px">
-          <div id="tpp-card-content" style="margin: 10px;">
-            <h1>IP-{{ card.idShort }}: {{ card.name }}</h1>
-
-            <div>
-              <img data-ng-src="{{ card.qrCodeUrl }}" height="100" width="100"/>
+        <div id="tpp-card"
+             style="border: 1px solid rgb(128,128,128); margin: 20px; width: 500px; height: 300px; overflow:hidden; position: relative">
+          <div style="margin: 10px;">
+            <div style="float: left;margin: -10px 0 0 -10px;">
+              <img style="border: 0; margin: 0;" data-ng-src="{{ card.qrCodeUrl }}" height="100" width="100"/>
+            </div>
+            <div style="position:absolute; left:100px; width:390px;">
+              <span style="font-size: 18pt;">{{ card.name }}</span><br/>
+              <span>IP-{{ card.idShort }}</span>
             </div>
 
+            <div style="with: 100%; content: ' '; clear: both"/>
 
-            <pre>{{ card.desc }}</pre>
-            <span>Owner: {{ card.members | initials }}</span>
+            <div style="height: 150px; overflow: hidden;" data-ng-bind-html-unsafe="card.desc | newlines"></div>
+            <div style="width: 480px; position: absolute; border-top: 1px solid rgb(128,128,128);" >Owner: {{ card.members | initials }}</div>
           </div>
         </div>
       </div>
@@ -116,7 +121,7 @@
 
     <div id="tpp-print-frame">
       <div data-ng-repeat="checkItem in itemsToPrint">
-        <div style="border: 1px solid rgb(128,128,128); float;left; margin:20px">
+        <div style="border: 1px solid rgb(128,128,128); float;left; margin:20px; width: 500px;">
           <div style="margin: 10px;">
             <h1>IP-{{ checkItem.card.idShort }}: {{ checkItem.card.name }}</h1>
 
@@ -124,7 +129,7 @@
               <img data-ng-src="{{ checkItem.card.qrCodeUrl }}" height="100" width="100"/>
             </div>
 
-            <pre>{{ checkItem.name }}</pre>
+            <div>{{ checkItem.name }}</div>
             <span>Owner: {{ checkItem.card.members | initials }}</span>
           </div>
         </div>
