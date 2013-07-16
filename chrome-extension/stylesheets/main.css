@@ -1,0 +1,33 @@
+body {
+  background: #27709b;
+  padding: 8px;
+}
+
+.tpp_container {
+  width: 650px;
+}
+
+.tpp_box {
+  background: #e3e3e3;
+  border-radius: 3px;
+  padding: 8px;
+}
+.tpp_box .tpp_listWithCards {
+  background: white;
+  border: 1px solid #b9b9b9;
+  border-radius: 3px;
+  margin: 0 0 4px;
+  padding: 8px;
+}
+
+.tpp_button {
+  background: #e6e6e6;
+  border: 1px solid #d9d9d9;
+  border-bottom-color: #d3d3d3;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 4px;
+  position: relative;
+  text-decoration: none;
+}
