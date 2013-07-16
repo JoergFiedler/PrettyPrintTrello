@@ -1,7 +1,8 @@
 $white: #fff;
 $trello_blue: #27709b;
 $trello_grey: #e3e3e3;
-$trello_border_grey_1px: #b9b9b9;
+$trello_border_grey: #b9b9b9;
+$button_hover: #318ec4;
 
 $default_padding: 8px;
 $border_radius: 3px;
@@ -22,10 +23,15 @@ body {
 	
 	.tpp_listWithCards {
 		background: $white;
-		border: 1px solid $trello_border_grey_1px;
+		border: 1px solid $trello_border_grey;
 		border-radius: $border_radius;
 		margin: 0 0 4px;
 		padding: $default_padding;
+		
+		&:hover {
+			border-color: #2b7cab;
+			cursor: pointer;
+		}
 	}
 }
 
@@ -35,8 +41,29 @@ body {
 	border-bottom-color: #d3d3d3;
 	border-radius: 2px;
 	cursor: pointer;
-	font-size: 13px;
+	font-size: 12px;
 	padding: 4px;
 	position: relative;
 	text-decoration: none;
+	
+	&.on_grey {
+		background: -webkit-linear-gradient(top, #fff 0, #f3f3f3 100%);
+		background: linear-gradient(to bottom, #fff 0, #f3f3f3 100%);
+		border: 1px solid #cecece;
+		border-bottom-color: #a0a0a0;
+		display: inline-block;
+		font-weight: bold;
+		overflow: hidden;
+		white-space: nowrap;
+		position: relative;
+		text-decoration: none;
+		text-overflow: ellipsis;
+	}
+	
+	&:hover {
+		background: $button_hover;
+		border-color: $button_hover;
+		color: $white;
+	}
 }
+

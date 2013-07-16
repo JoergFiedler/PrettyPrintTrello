@@ -27,9 +27,7 @@
     <div data-ng-controller="BoardViewController" class="tpp_box">
       <p>
         <b>{{ itemsToPrint.length }}</b> cards marked for printing.
-        <a class="btn btn-mini"
-           data-ng-disabled="itemsToPrint.length==0"
-           data-ng-click="showPreview()">Preview</a>
+        <a class="tpp_button on_grey" data-ng-disabled="itemsToPrint.length==0" data-ng-click="showPreview()">Preview</a>
       </p>
 
       <div data-ng-repeat="list in listsWithCards" class="tpp_listWithCards">
@@ -126,7 +124,7 @@
   </script>
 
   <script type="text/ng-template" id="/tpp-card-preview.html">
-    <a class="btn btn-link" data-ng-click="print()">Print'em All</a>
+    <a class="tpp_button on_grey" data-ng-click="print()">Print'em All</a>
 
     <div id="tpp-print-frame">
       <div data-ng-repeat="checkItem in itemsToPrint">
