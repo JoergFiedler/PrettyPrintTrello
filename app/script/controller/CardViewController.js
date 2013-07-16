@@ -1,4 +1,4 @@
-angular.module('TrelloPrettyPrint').controller('CardViewController', function CardViewController($scope, $location, trelloService) {
+angular.module('TrelloPrettyPrint').controller('CardViewController', function CardViewController($scope, $location, hashTagConverterService, trelloService) {
   "use strict";
 
   function onError(data) {
@@ -45,6 +45,10 @@ angular.module('TrelloPrettyPrint').controller('CardViewController', function Ca
     trelloService.loadCard(ids.cardId, onSuccessLoadCard, onError);
   }
 
+  function convertHashTags() {
+    hashTagConverterService.convert($scope.card);
+  }
+
   function updateCardsToPrint() {
     var event = $scope.toBePrinted ? 'ttp:card:print:add' : 'ttp:card:print:remove';
     $scope.$emit(event, $scope.card);
@@ -77,6 +81,7 @@ angular.module('TrelloPrettyPrint').controller('CardViewController', function Ca
   $scope.$on("tpp:list:print:add", printCard);
   $scope.$on("tpp:list:print:remove", printCard);
 
+  $scope.$watch("card", convertHashTags);
   $scope.$watch("card", loadMembers);
   $scope.$watch("card", loadCheckLists);
   $scope.$watch("card", createQrCodeUrl);
