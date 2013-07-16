@@ -16,6 +16,13 @@ body {
 	width: 650px;
 }
 
+.tpp_hide {
+	background: $white;
+	border: 0;
+	display: block;
+	margin: 0 0 20px 0;
+}
+
 .tpp_box {
 	background: $trello_grey;
 	border-radius: $border_radius;
@@ -32,6 +39,10 @@ body {
 			border-color: #2b7cab;
 			cursor: pointer;
 		}
+	}
+	
+	.tpp_card {
+		margin: 0 0 0 20px;
 	}
 }
 
