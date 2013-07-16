@@ -6,6 +6,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-sass');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -24,6 +25,16 @@ module.exports = function (grunt) {
     autotest: {
       unit: 'karma.unit.conf.js'
     },
+    sass: {                      
+    	dist: {                    
+      	options: {               
+        	style: 'expanded'
+      	},
+      	files: {                 
+        	'chrome-extension/stylesheets/main.css': 'app/sass/main.scss'
+      	}
+    	}
+  	},
     copy: {
       chromeExtHtml: {
         files :[
@@ -41,7 +52,7 @@ module.exports = function (grunt) {
     watch: {
       scripts: {
         files: ['app/**/*'],
-        tasks: ['copy', 'concat'],
+        tasks: ['copy', 'concat', 'sass'],
         options: {
           nospawn: true
         }
@@ -59,5 +70,5 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('server', ['concat', 'connect:server']);
-  grunt.registerTask('all', ['test', 'copy', 'concat']);
+  grunt.registerTask('all', ['test', 'sass', 'copy', 'concat']);
 };

@@ -2,7 +2,8 @@
 <html data-ng-app="TrelloPrettyPrint" data-ng-csp="">
 <head>
   <title>Trello Pretty Print</title>
-  <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css" rel="stylesheet">
+  <link href="stylesheets/main.css" rel="stylesheet">
   <style>
     [ng\:cloak], [ng-cloak], .ng-cloak {
       display: none;
@@ -12,7 +13,8 @@
 </head>
 <body data-ng-controller="ExtensionPopupController">
 
-<div style="width:650px; height:200px;">
+<div class="tpp_container">
+
   <div data-ng-show="authorized==false">
     <button class="btn btn-link" data-ng-click="authorize()">Not authorized! Want to get authorized?</button>
   </div>
@@ -22,7 +24,7 @@
   </div>
 
   <script type="text/ng-template" id="/tpp-board.html">
-    <div data-ng-controller="BoardViewController">
+    <div data-ng-controller="BoardViewController" class="tpp_box">
       <p>
         <b>{{ itemsToPrint.length }}</b> cards marked for printing.
         <a class="btn btn-mini"
@@ -30,10 +32,10 @@
            data-ng-click="showPreview()">Preview</a>
       </p>
 
-      <div data-ng-repeat="list in listsWithCards">
+      <div data-ng-repeat="list in listsWithCards" class="tpp_listWithCards">
         <div data-ng-controller="ListViewController">
-          <button class="btn btn-inverse btn-mini" data-ng-click="toggleShowHide()">Show/Hide</button>
-          <button class="btn btn-inverse btn-mini" data-ng-click="togglePrintAllNone()">All/None</button>
+          <button class="tpp_button" data-ng-click="toggleShowHide()">Show/Hide</button>
+          <button class="tpp_button" data-ng-click="togglePrintAllNone()">All/None</button>
           <h3 style="display: inline">{{list.name}}</h3>
 
           <div data-ng-hide="hidden">
