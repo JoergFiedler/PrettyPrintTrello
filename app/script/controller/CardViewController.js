@@ -26,7 +26,7 @@ angular.module('TrelloPrettyPrint').controller('CardViewController', function Ca
   }
 
   function createQrCodeUrl() {
-    $scope.card.qrCodeUrl= 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl='+$scope.card.shortUrl;
+    $scope.card.qrCodeUrl= 'https://chart.googleapis.com/chart?cht=qr&chs=100x100&chl='+$scope.card.shortUrl;
   }
 
   function onSuccessLoadCard(card) {
@@ -42,7 +42,7 @@ angular.module('TrelloPrettyPrint').controller('CardViewController', function Ca
   }
 
   function loadCard(event, ids) {
-    trelloService.loadCard(ids.boardId, ids.cardIdShort, onSuccessLoadCard, onError);
+    trelloService.loadCard(ids.cardId, onSuccessLoadCard, onError);
   }
 
   function updateCardsToPrint() {

@@ -36,19 +36,16 @@ describe('In CardViewController', function() {
     });
 
     it('should call trelloService with boardId and cardIdShort from event data', function() {
-      rootScope.$broadcast('tpp:card:ids', {boardId: 'any-boardId', cardIdShort: 'any-cardIdShort'});
+      rootScope.$broadcast('tpp:card:ids', {cardId: 'any-cardId'});
 
-      expect(trelloService.loadCard).toHaveBeenCalledWith(
-        'any-boardId', 'any-cardIdShort', jasmine.any(Function), jasmine.any(Function)
-      );
+      expect(trelloService.loadCard).toHaveBeenCalledWith('any-cardId', jasmine.any(Function), jasmine.any(Function));
     });
 
     it('should set $scope.card after a successful call to trelloService.loadCard', function() {
       var onSuccess;
+      rootScope.$broadcast('tpp:card:ids', {cardId: 'any-cardId'});
 
-      rootScope.$broadcast('tpp:card:ids', {boardId: 'any-boardId', cardIdShort: 'any-cardIdShort'});
-
-      onSuccess = trelloService.loadCard.mostRecentCall.args[2];
+      onSuccess = trelloService.loadCard.mostRecentCall.args[1];
       onSuccess(card);
 
       expect(scope.card).toBe(card)

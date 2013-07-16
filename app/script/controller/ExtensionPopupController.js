@@ -1,8 +1,8 @@
 angular.module('TrelloPrettyPrint').controller('ExtensionPopupController', function ExtensionPopupController($scope, $timeout, $location, $window, trelloService, googleExtensionApiService, options) {
   "use strict";
 
-  var cardRegex = /.*\/card\/[^/]+\/([^/]+)\/([^/]+)*/,
-    boardRegex = /.*\/board\/([^/]+)\/([^/]+)*/;
+  var cardRegex = /.*\/c\/([^/]+)\/([^/]+)*/,
+    boardRegex = /.*\/b\/([^/]+)\/([^/]+)*/;
 
   $scope.itemsToPrint = [];
   $scope.activeTabUrl = '';
@@ -24,10 +24,10 @@ angular.module('TrelloPrettyPrint').controller('ExtensionPopupController', funct
 
     if (cardMatch) {
       $location.path('/card');
-      sendEvent('card:ids', {boardId: cardMatch[1], cardIdShort: cardMatch[2]});
+      sendEvent('card:ids', {cardId: cardMatch[1]});
     } else if (boardMatch) {
       $location.path('/board');
-      sendEvent('board:ids', {boardId: boardMatch[2]});
+      sendEvent('board:ids', {boardId: boardMatch[1]});
     }
   }
 

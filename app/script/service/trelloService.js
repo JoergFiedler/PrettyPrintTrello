@@ -24,8 +24,8 @@ angular.module('TrelloPrettyPrint').service('trelloService', function TrelloServ
     callTrello(url, { cards: 'open'}, success, error);
   }
 
-  function loadCard(boardId, cardIdShort, success, error) {
-    var url = 'boards/' + boardId + '/cards/' + cardIdShort;
+  function loadCard(cardId, success, error) {
+    var url = 'cards/' + cardId;
     callTrello(url, {}, success, error);
   }
 

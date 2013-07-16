@@ -69,24 +69,24 @@ describe('Extension Popup Controller', function() {
   describe('method switch', function() {
 
     it('should change location path to /card when activeTabUrl contains /card/', function() {
-      scope.activeTabUrl = 'any/card/any/boardId/cardIdShort';
+      scope.activeTabUrl = 'any/c/cardId/anything';
       scope.$apply();
 
       expect(location.path).toHaveBeenCalledWith('/card');
     });
 
     it('should should broadcast boardId and cardShortId when activeTabUrl matches for card', function() {
-      scope.activeTabUrl = 'any/card/any/boardId/cardIdShort';
+      scope.activeTabUrl = 'any/c/cardId/anything';
       spyOn(scope, '$broadcast');
 
       scope.$apply();
       timeout.flush();
 
-      expect(scope.$broadcast).toHaveBeenCalledWith('tpp:card:ids', {boardId: 'boardId', cardIdShort: 'cardIdShort'});
+      expect(scope.$broadcast).toHaveBeenCalledWith('tpp:card:ids', {cardId: 'cardId'});
     });
 
     it('should change location path to /board when activeTabUrl contains /board/', function() {
-      scope.activeTabUrl = 'any/board/any/id';
+      scope.activeTabUrl = 'any/b/id/anything';
 
       scope.$apply();
 
@@ -94,7 +94,7 @@ describe('Extension Popup Controller', function() {
     });
 
     it('should should set scope.id to id when activeTabUrl matches for board', function() {
-      scope.activeTabUrl = 'any/board/any/boardId';
+      scope.activeTabUrl = 'any/b/boardId/anything';
 
       spyOn(scope, '$broadcast');
 
