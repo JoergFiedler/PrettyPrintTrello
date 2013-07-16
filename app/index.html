@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html data-ng-app="TrelloPrettyPrint" data-ng-csp="">
 <head>
   <title>Trello Pretty Print</title>
@@ -94,22 +94,28 @@
     <a class="btn btn-link" data-ng-click="print()">Print'em All</a>
 
     <div id="tpp-print-frame">
-      <div style="" data-ng-repeat="card in itemsToPrint">
+      <style type = "text/css" scoped>
+        .epic { border: 10px solid rgb(201,59,72);  }
+        .story { border: 10px solid rgb(255,204,0);  }
+      </style>
+      <div data-ng-repeat="card in itemsToPrint">
         <div id="tpp-card"
              style="page-break-inside: avoid; border: 1px solid rgb(128,128,128); margin: 1px; width: 500px; height: 300px; overflow:hidden; position: relative">
-          <div style="margin: 10px;">
-            <div style="">
-              <img data-ng-src="{{ card.qrCodeUrl }}" height="100" width="100"/>
-            </div>
-            <div style="position:absolute; top: 20px; left:110px; width:380px; font-weight: bold;">
-              <span style="font-size: 20px;">{{ card.name }}</span><br/>
-              <span>IP-{{ card.idShort }}</span>
-            </div>
+          <div data-ng-class="{epic: card.isEpic, story: !card.isEpic}" style="height:280px;">
+            <div style="margin: 10px;">
+              <div style="">
+                <img data-ng-src="{{ card.qrCodeUrl }}" height="100" width="100"/>
+              </div>
+              <div style="position:absolute; top: 30px; left:120px; width:370px; font-weight: bold;">
+                <span style="font-size: 20px;">{{ card.name | removeHashTags }}</span><br/>
+                <span>IP-{{ card.idShort }}</span>
+              </div>
 
-            <div style="with: 100%; content: ' '; clear: both"/>
-            <div style="height: 140px; overflow: hidden;" data-ng-bind-html-unsafe="card.desc | newlines"></div>
-            <div style="width: 480px; position: absolute; border-top: 1px solid rgb(128,128,128); font-size: 18px; font-weight: bold; padding-top: 10px;bottom: 10;">Owner: {{
-              card.members | initials }}
+              <div style="with: 100%; content: ' '; clear: both"/>
+              <div style="height: 120px; overflow: hidden;" data-ng-bind-html-unsafe="card.desc | newlines | removeHashTags"/>
+              <div style="width: 480px; position: absolute; border-top: 1px solid rgb(128,128,128); font-size: 18px; font-weight: bold;">
+                Owner: {{ card.members | initials }}
+              </div>
             </div>
           </div>
         </div>
@@ -122,7 +128,7 @@
 
     <div id="tpp-print-frame">
       <div data-ng-repeat="checkItem in itemsToPrint">
-        <div style="page-break-inside: avoid; border: 1px solid rgb(128,128,128); float: left; margin:1px; width: 250px; height:200; overflow:hidden; position: relative; font-weight: bold;">
+        <div style="page-break-inside: avoid; border: 1px solid rgb(128,128,128); float: left; margin:1px; width: 275px; height:220; overflow:hidden; position: relative; font-weight: bold;">
           <div style="margin: 10px;">
             <div style="border-bottom: 1px solid rgb(128,128,128); width:100%">IP-{{ checkItem.card.idShort }}</div>
             <div style="height: 150px;">{{ checkItem.name }}</div>
