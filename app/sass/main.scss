@@ -1,14 +1,21 @@
+/*******************************
+	VARIABLES
+********************************/
+
 $white: #fff;
 $trello_blue: #27709b;
 $trello_grey: #e3e3e3;
 $trello_border_grey: #b9b9b9;
 $button_hover: #318ec4;
+$text_dark_grey: rgb(57,57,57);
 
 $default_padding: 8px;
 $border_radius: 3px;
 
+
 body {
 	background: $trello_blue;
+	color: $text_dark_grey;
 	padding: $default_padding;
 }
 
@@ -24,9 +31,18 @@ body {
 }
 
 .tpp_box {
-	background: $trello_grey;
 	border-radius: $border_radius;
 	padding: $default_padding;
+	
+	.tpp_box_wrap {
+		background: $trello_grey;
+		border-radius: 4px;
+		padding: 8px;
+	}
+	
+	.tpp_title {
+		color: $white;
+	}
 	
 	.tpp_listWithCards {
 		background: $white;
@@ -36,13 +52,24 @@ body {
 		padding: $default_padding;
 		
 		&:hover {
-			border-color: #2b7cab;
 			cursor: pointer;
 		}
 	}
 	
 	.tpp_card {
-		margin: 0 0 0 20px;
+		background: $white;
+		border: 1px solid $trello_border_grey;
+		border-radius: 4px;
+		margin: 0 0 4px;
+		padding: 4px;
+		
+		&:hover {
+			.tpp_button {
+				background: $button_hover;
+				border-color: $button_hover;
+				color: $white;
+			}
+		}
 	}
 }
 
@@ -71,10 +98,35 @@ body {
 		text-overflow: ellipsis;
 	}
 	
-	&:hover {
+	&.blue {
+		background: -webkit-linear-gradient(top, rgba(255,255,255,0.23) 0, rgba(255,255,255,0.2) 100%);
+		border: 0;
+		
+		&:hover {
+			background: -webkit-linear-gradient(top, rgba(255,255,255,0.33) 0, rgba(255,255,255,0.33) 100%);
+		}
+	}
+	
+	&:hover,
+	&.tpp_list_opened {
 		background: $button_hover;
 		border-color: $button_hover;
 		color: $white;
 	}
+	
 }
 
+
+/*******************************
+	PRINT'EM ALL
+********************************/
+
+.tpp_print_frame {
+	
+	&.tpp_print_card {
+		background: $trello_grey;
+		height: 280px;	
+	}
+	&.epic { border: 10px solid rgb(201,59,72);  }
+  &.story { border: 10px solid rgb(255,204,0);  }
+}

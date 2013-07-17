@@ -28,7 +28,7 @@ module.exports = function (grunt) {
     sass: {                      
     	dist: {                    
       	options: {               
-        	style: 'expanded'
+        	style: 'compressed'
       	},
       	files: {                 
         	'chrome-extension/stylesheets/main.css': 'app/sass/main.scss'

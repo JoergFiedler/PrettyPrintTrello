@@ -25,23 +25,25 @@
 
   <script type="text/ng-template" id="/tpp-board.html">
     <div data-ng-controller="BoardViewController" class="tpp_box">
-      <p>
+      <p class="tpp_title">
         <b>{{ itemsToPrint.length }}</b> cards marked for printing.
-        <a class="tpp_button on_grey" data-ng-disabled="itemsToPrint.length==0" data-ng-click="showPreview()">Preview</a>
+        <a class="tpp_button blue" data-ng-disabled="itemsToPrint.length==0" data-ng-click="showPreview()">Preview</a>
       </p>
 
-      <div data-ng-repeat="list in listsWithCards" class="tpp_listWithCards">
+      <div class="tpp_box_wrap">
+      	<div data-ng-repeat="list in listsWithCards" class="tpp_listWithCards">
         <div data-ng-controller="ListViewController">
-          <button class="tpp_button" data-ng-click="toggleShowHide()">Show/Hide</button>
+          <button data-ng-class="{'tpp_list_opened': activeClass}" class="tpp_button" data-ng-click="toggleShowHide()">Show/Hide</button>
           <button class="tpp_button" data-ng-click="togglePrintAllNone()">All/None</button>
           <h3 style="display: inline">{{list.name}}</h3>
 
 					<hr class="tpp_hide">
           <div data-ng-hide="hidden">
-            <div data-ng-controller="CardViewController" data-ng-repeat="card in list.cards" class="tpp_card">
+            <div data-ng-click="togglePrintCard()" data-ng-controller="CardViewController" data-ng-repeat="card in list.cards" class="tpp_card">
               <a class="tpp_button on_grey"
-                 data-ng-class="toBePrinted && 'btn-warning' || 'btn-success'"
-                 data-ng-click="togglePrintCard()">{{toBePrinted && 'Remove' || 'Add'}}</a>
+                 data-ng-class="toBePrinted && 'btn-warning' || 'btn-success'">
+                 {{toBePrinted && 'Remove' || 'Add'}}
+              </a>
               <h4 style="display: inline;">IP-{{card.idShort}}: {{card.name}}</h4>
 
               <p class="small">{{card.desc}}</p>
@@ -50,6 +52,7 @@
             </div>
           </div>
         </div>
+      	</div>
       </div>
     </div>
   </script>
@@ -94,17 +97,12 @@
   <script type="text/ng-template" id="/tpp-board-preview.html">
     <a class="btn btn-link" data-ng-click="print()">Print'em All</a>
 
-    <div id="tpp-print-frame">
-      <style type = "text/css" scoped>
-        .epic { border: 10px solid rgb(201,59,72);  }
-        .story { border: 10px solid rgb(255,204,0);  }
-      </style>
+    <div class="tpp_print_frame">
       <div data-ng-repeat="card in itemsToPrint">
-        <div id="tpp-card"
-             style="page-break-inside: avoid; border: 1px solid rgb(128,128,128); margin: 1px; width: 500px; height: 300px; overflow:hidden; position: relative">
-          <div data-ng-class="{epic: card.isEpic, story: !card.isEpic}" style="height:280px;">
+        <div class="tpp_card" style="page-break-inside: avoid; border: 1px solid rgb(128,128,128); margin: 1px; width: 500px; height: 300px; overflow:hidden; position: relative">
+          <div class="tpp_print_card" data-ng-class="{epic: card.isEpic, story: !card.isEpic}">
             <div style="margin: 10px;">
-              <div style="">
+              <div>
                 <img data-ng-src="{{ card.qrCodeUrl }}" height="100" width="100"/>
               </div>
               <div style="position:absolute; top: 30px; left:120px; width:370px; font-weight: bold;">
