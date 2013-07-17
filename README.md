@@ -11,6 +11,7 @@ Prerequisites
 
 - NodeJS 0.10.12
 - [grunt-cli](https://github.com/gruntjs/grunt-cli)
+- ruby && sass, see https://github.com/gruntjs/grunt-contrib-sass
 
 Build It
 --------
