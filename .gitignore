@@ -7,4 +7,5 @@ node_modules/
 test/test_reports/
 .idea
 *.iml
+.sass-cache
 
