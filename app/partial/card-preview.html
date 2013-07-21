@@ -1,0 +1,22 @@
+<div class="tpp_box">
+
+  <p class="tpp_title">
+    <a class="tpp_button blue"
+       data-ng-click="print()">Print'em All</a>
+  </p>
+
+  <div class="tpp_box_wrap">
+    <div id="tpp-print-frame"
+         class="tpp_print_frame">
+      <div class="tpp_print_check_item"
+        data-ng-repeat="checkItem in itemsToPrint">
+        <div class="tpp_print_check_item_container">
+          <div class="tpp_print_check_item_id">IP-{{ checkItem.card.idShort }}</div>
+          <div class="tpp_print_check_item_name">{{ checkItem.name }}</div>
+          <span class="tpp_print_check_item_owner">Owner: {{ checkItem.card.members | initials }}</span>
+        </div>
+      </div>
+      <div class="tpp_clear_float">&nbsp;</div>
+    </div>
+  </div>
+</div>

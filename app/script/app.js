@@ -9,7 +9,7 @@
         when('/card', {templateUrl: '/tpp-card.html'}).
         when('/board', {templateUrl: '/tpp-board.html'}).
         when('/board/preview', {templateUrl: '/partial/board-preview.html'}).
-        when('/card/preview', {templateUrl: '/tpp-card-preview.html'}).
+        when('/card/preview', {templateUrl: '/partial/card-preview.html'}).
 
         otherwise({redirectTo: '/'});
     })

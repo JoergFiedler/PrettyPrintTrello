@@ -178,3 +178,35 @@ body {
   .epic { border: 10px solid $epic_color; }
   .story { border: 10px solid $story_color; }
 }
+
+.tpp_print_check_item {
+  background-color: $white;
+  page-break-inside: avoid;
+  border: 2px solid $trello_border_grey;
+  float: left;
+  width: 275px;
+  height:220px;
+  overflow:hidden;
+  position: relative;
+  font-weight: bold;
+
+  .tpp_print_check_item_container {
+    margin: 10px;
+
+    .tpp_print_check_item_id {
+      border-bottom: 1px solid $trello_grey;
+      width:100%
+    }
+
+    .tpp_print_check_item_name {
+      height: 150px;
+    }
+
+    .tpp_print_check_item_owner {
+      position: absolute;
+      width: 100%;
+      bottom: 10px;
+      border-top: 1px solid $trello_grey;
+    }
+  }
+}

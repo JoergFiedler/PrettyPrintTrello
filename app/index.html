@@ -104,23 +104,6 @@
     </div>
   </script>
 
-  <script type="text/ng-template" id="/tpp-card-preview.html">
-    <a class="tpp_button on_grey" data-ng-click="print()">Print'em All</a>
-
-    <div id="tpp-print-frame">
-      <div data-ng-repeat="checkItem in itemsToPrint">
-        <div
-          style="page-break-inside: avoid; border: 1px solid rgb(128,128,128); float: left; margin:1px; width: 275px; height:220; overflow:hidden; position: relative; font-weight: bold;">
-          <div style="margin: 10px;">
-            <div style="border-bottom: 1px solid rgb(128,128,128); width:100%">IP-{{ checkItem.card.idShort }}</div>
-            <div style="height: 150px;">{{ checkItem.name }}</div>
-            <span style="position: absolute; width: 100%; bottom: 10px; border-top: 1px solid rgb(128,128,128)">Owner: {{ checkItem.card.members | initials }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </script>
-
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.7/angular.min.js"></script>
