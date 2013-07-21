@@ -22,5 +22,5 @@
   "scripts": {
     "test": "grunt test --verbose"
   },
-  "license" : "BSD"
+  "license" : "MIT"
 }

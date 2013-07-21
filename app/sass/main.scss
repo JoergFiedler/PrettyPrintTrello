@@ -52,7 +52,8 @@ body {
 		padding: $default_padding;
 		
 		&:hover {
-			cursor: pointer;
+		  border-color: $button_hover;
+		  cursor: pointer;
 		}
 	}
 	
@@ -64,6 +65,8 @@ body {
 		padding: 4px;
 		
 		&:hover {
+		  border-color: $button_hover;
+
 			.tpp_button {
 				background: $button_hover;
 				border-color: $button_hover;
