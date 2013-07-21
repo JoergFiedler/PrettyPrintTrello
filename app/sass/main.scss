@@ -94,7 +94,7 @@ body {
 	padding: 4px;
 	position: relative;
 	text-decoration: none;
-	
+
 	&.on_grey {
 		background: -webkit-linear-gradient(top, #fff 0, #f3f3f3 100%);
 		background: linear-gradient(to bottom, #fff 0, #f3f3f3 100%);
@@ -110,6 +110,7 @@ body {
 	}
 	
 	&.blue {
+    color: $white;
 		background: -webkit-linear-gradient(top, rgba(255,255,255,0.23) 0, rgba(255,255,255,0.2) 100%);
 		border: 0;
 		

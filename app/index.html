@@ -27,7 +27,7 @@
     <div data-ng-controller="BoardViewController" class="tpp_box">
       <p class="tpp_title">
         <b>{{ itemsToPrint.length }}</b> cards marked for printing.
-        <a class="tpp_button blue" data-ng-disabled="itemsToPrint.length==0" data-ng-click="showPreview()">Preview</a>
+        <button class="tpp_button blue" data-ng-disabled="itemsToPrint.length==0" data-ng-click="showPreview()">Preview</button>
       </p>
 
       <div class="tpp_box_wrap">
@@ -69,7 +69,7 @@
     <div data-ng-controller="CardViewController" class="tpp_box">
       <p class="tpp_title">
         <b>{{ itemsToPrint.length }}</b> cards marked for printing.
-        <a class="tpp_button blue" data-ng-disabled="itemsToPrint.length==0" data-ng-click="showPreview()">Preview</a>
+        <button class="tpp_button blue" data-ng-disabled="itemsToPrint.length==0" data-ng-click="showPreview()">Preview</button>
 
       <h3 data-ng-show="card">IP-{{card.idShort}}: {{card.name}}</h3>
       </p>
@@ -81,8 +81,8 @@
              data-ng-repeat="checklist in card.checklists"
              data-ng-controller="CheckListViewController">
 
-          <button class="tpp_button" data-ng-click="toggleShowHide()">Show/Hide</button>
-          <button class="tpp_button" data-ng-click="togglePrintAllNone()">All/None</button>
+          <a class="tpp_button" data-ng-click="toggleShowHide()">Show/Hide</a>
+          <a class="tpp_button" data-ng-click="togglePrintAllNone()">All/None</a>
           <h4 style="display: inline;">{{checklist.name}}</h4>
           <hr class="tpp_hide">
           <div data-ng-hide="hidden">
