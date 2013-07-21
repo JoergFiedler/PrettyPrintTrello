@@ -18,16 +18,24 @@ angular.module('TrelloPrettyPrint').controller('ExtensionPopupController', funct
     }, 0);
   }
 
+  function showBoardView(boardId) {
+    $location.path('/board');
+    sendEvent('board:ids', {boardId: boardId});
+  }
+
+  function showCardView(cardId) {
+    $location.path('/card');
+    sendEvent('card:ids', {cardId: cardId});
+  }
+
   function switchView() {
     var cardMatch = cardRegex.exec($scope.activeTabUrl);
     var boardMatch = boardRegex.exec($scope.activeTabUrl);
 
     if (cardMatch) {
-      $location.path('/card');
-      sendEvent('card:ids', {cardId: cardMatch[1]});
+      showCardView(cardMatch[1])
     } else if (boardMatch) {
-      $location.path('/board');
-      sendEvent('board:ids', {boardId: boardMatch[1]});
+      showBoardView(boardMatch[1])
     }
   }
 

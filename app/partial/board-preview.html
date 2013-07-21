@@ -1,26 +1,31 @@
-<a class="tpp_button blue" data-ng-click="print()">Print'em All</a>
+<div class="tpp_box">
+  <p class="tpp_title">
+    <a class="tpp_button blue"
+       data-ng-click="print()">Print'em All</a>
+  </p>
 
-<div id="tpp-print-frame"
-     class="tpp_print_frame">
-  <div data-ng-repeat="card in itemsToPrint">
-    <div class="tpp_card"
-         style="page-break-inside: avoid; border: 1px solid rgb(128,128,128); margin: 1px; width: 500px; height: 300px; overflow:hidden; position: relative">
-      <div class="tpp_print_card" data-ng-class="{epic: card.isEpic, story: !card.isEpic}">
-        <div style="margin: 10px;">
-          <div>
-            <img data-ng-src="{{ card.qrCodeUrl }}" height="100" width="100"/>
-          </div>
-          <div style="position:absolute; top: 30px; left:120px; width:370px; font-weight: bold;">
-            <span style="font-size: 20px;">{{ card.name | removeHashTags }}</span><br/>
-            <span>IP-{{ card.idShort }}</span>
-          </div>
+  <div class="tpp_box_wrap">
+    <div id="tpp-print-frame"
+         class="tpp_print_frame">
+      <div data-ng-repeat="card in itemsToPrint"
+           class="tpp_print_card_container">
+        <div class="tpp_print_card"
+             data-ng-class="{epic: card.isEpic, story: !card.isEpic}">
+          <div class="tpp_print_card_content">
+            <div>
+              <img data-ng-src="{{ card.qrCodeUrl }}"/>
+            </div>
+            <div class="title">
+              <span class="title_text">{{ card.name | removeHashTags }}</span><br/>
+              <span>IP-{{ card.idShort }}</span>
+            </div>
 
-          <div style="with: 100%; content: ' '; clear: both"/>
-          <div style="height: 120px; overflow: hidden;"
-               data-ng-bind-html-unsafe="card.desc | newlines | removeHashTags"/>
-          <div
-            style="width: 480px; position: absolute; border-top: 1px solid rgb(128,128,128); font-size: 18px; font-weight: bold;">
-            Owner: {{ card.members | initials }}
+            <div class="tpp_clear_float"/>
+            <div class="description"
+                 data-ng-bind-html-unsafe="card.desc | newlines | removeHashTags"/>
+            <div class="owner">
+              Owner: {{ card.members | initials }}
+            </div>
           </div>
         </div>
       </div>

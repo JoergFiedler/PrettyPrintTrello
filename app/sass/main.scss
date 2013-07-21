@@ -8,6 +8,8 @@ $trello_grey: #e3e3e3;
 $trello_border_grey: #b9b9b9;
 $button_hover: #318ec4;
 $text_dark_grey: rgb(57,57,57);
+$epic_color: rgb(201,59,72);
+$story_color: rgb(255,204,0);
 
 $default_padding: 8px;
 $border_radius: 3px;
@@ -21,6 +23,12 @@ body {
 
 .tpp_container {
 	width: 650px;
+}
+
+.tpp_clear_float {
+  with: 100%;
+  content: ' ';
+  clear: both
 }
 
 .tpp_hide {
@@ -124,12 +132,48 @@ body {
 	PRINT'EM ALL
 ********************************/
 
-.tpp_print_frame {
-	
-	&.tpp_print_card {
-		background: $trello_grey;
-		height: 280px;	
-	}
-	&.epic { border: 10px solid rgb(201,59,72);  }
-  &.story { border: 10px solid rgb(255,204,0);  }
+.tpp_print_card_container {
+  background: $white;
+  page-break-inside: avoid;
+  border: 2px solid $trello_border_grey;
+  width: 500px;
+  height: 300px;
+  overflow:hidden;
+  position: relative;
+
+  .tpp_print_card {
+    margin: auto;
+    height: 280px;
+
+    .tpp_print_card_content {
+      margin: 10px;
+
+      .title {
+        position:absolute;
+        top: 30px;
+        left:120px;
+        width:370px;
+        font-weight: bold;
+
+        .title_text {
+          font-size: 20px;
+        }
+      }
+
+      .description {
+        height: 120px; overflow: hidden;
+      }
+
+      .owner {
+        width: 460px;
+        position: absolute;
+        border-top: 1px solid $trello_grey;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .epic { border: 10px solid $epic_color; }
+  .story { border: 10px solid $story_color; }
 }
