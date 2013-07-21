@@ -31,18 +31,23 @@
       </p>
 
       <div class="tpp_box_wrap">
-        <div data-ng-repeat="list in listsWithCards" class="tpp_listWithCards">
+        <div data-ng-repeat="list in listsWithCards"
+             class="tpp_listWithItems">
           <div data-ng-controller="ListViewController">
             <button data-ng-class="{'tpp_list_opened': activeClass}"
                     class="tpp_button"
-                    data-ng-click="toggleShowHide()">Show/Hide</button>
+                    data-ng-click="toggleShowHide()">Show/Hide
+            </button>
             <button class="tpp_button"
-                    data-ng-click="togglePrintAllNone()">All/None</button>
+                    data-ng-click="togglePrintAllNone()">All/None
+            </button>
             <h3 style="display: inline">{{list.name}}</h3>
 
             <hr class="tpp_hide">
             <div data-ng-hide="hidden">
-              <div data-ng-click="togglePrintCard()" data-ng-controller="CardViewController" data-ng-repeat="card in list.cards" class="tpp_card">
+              <div data-ng-click="togglePrintCard()" data-ng-controller="CardViewController"
+                   data-ng-repeat="card in list.cards"
+                   class="tpp_item">
                 <a class="tpp_button on_grey"
                    data-ng-class="toBePrinted && 'btn-warning' || 'btn-success'">
                   {{toBePrinted && 'Remove' || 'Add'}}
@@ -61,36 +66,38 @@
   </script>
 
   <script type="text/ng-template" id="/tpp-card.html">
-    <div data-ng-controller="CardViewController">
-      <p>
+    <div data-ng-controller="CardViewController" class="tpp_box">
+      <p class="tpp_title">
         <b>{{ itemsToPrint.length }}</b> cards marked for printing.
-        <a class="btn btn-mini"
-           data-ng-disabled="itemsToPrint.length==0"
-           data-ng-click="showPreview()">Preview</a>
-      </p>
+        <a class="tpp_button blue" data-ng-disabled="itemsToPrint.length==0" data-ng-click="showPreview()">Preview</a>
 
       <h3 data-ng-show="card">IP-{{card.idShort}}: {{card.name}}</h3>
-      <span data-ng-show="card.members.length > 0">Owners: {{card.members | initials}}</span>
+      </p>
 
-      <div data-ng-show="card.checklists"
-           data-ng-repeat="checklist in card.checklists"
-           data-ng-controller="CheckListViewController">
 
-        <button class="btn btn-inverse btn-mini" data-ng-click="toggleShowHide()">Show/Hide</button>
-        <button class="btn btn-inverse btn-mini" data-ng-click="togglePrintAllNone()">All/None</button>
-        <h4 style="display: inline;">{{checklist.name}}</h4>
+      <div class="tpp_box_wrap">
+        <div class="tpp_listWithItems"
+             data-ng-show="card.checklists"
+             data-ng-repeat="checklist in card.checklists"
+             data-ng-controller="CheckListViewController">
 
-        <div data-ng-hide="hidden">
-          <div data-ng-repeat="checkItem in checklist.checkItems"
-               data-ng-init="checkItem.card = card"
-               data-ng-controller="CheckListItemViewController">
-            <a class="btn btn-mini"
-               data-ng-class="toBePrinted && 'btn-warning' || 'btn-success'"
-               data-ng-click="togglePrintCheckListItem()">{{toBePrinted && 'Remove' || 'Add'}}</a>
+          <button class="tpp_button" data-ng-click="toggleShowHide()">Show/Hide</button>
+          <button class="tpp_button" data-ng-click="togglePrintAllNone()">All/None</button>
+          <h4 style="display: inline;">{{checklist.name}}</h4>
+          <hr class="tpp_hide">
+          <div data-ng-hide="hidden">
+            <div class="tpp_item"
+                 data-ng-click="togglePrintCheckListItem()"
+                 data-ng-repeat="checkItem in checklist.checkItems"
+                 data-ng-init="checkItem.card = card"
+                 data-ng-controller="CheckListItemViewController">
+              <a class="tpp_button on_grey"
+                 data-ng-class="toBePrinted && 'btn-warning' || 'btn-success'">{{toBePrinted && 'Remove' || 'Add'}}</a>
 
-            <p style="display: inline;">
-              {{checkItem.name}}
-            </p>
+              <p style="display: inline;">
+                {{checkItem.name}}
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -102,7 +109,8 @@
 
     <div id="tpp-print-frame">
       <div data-ng-repeat="checkItem in itemsToPrint">
-        <div style="page-break-inside: avoid; border: 1px solid rgb(128,128,128); float: left; margin:1px; width: 275px; height:220; overflow:hidden; position: relative; font-weight: bold;">
+        <div
+          style="page-break-inside: avoid; border: 1px solid rgb(128,128,128); float: left; margin:1px; width: 275px; height:220; overflow:hidden; position: relative; font-weight: bold;">
           <div style="margin: 10px;">
             <div style="border-bottom: 1px solid rgb(128,128,128); width:100%">IP-{{ checkItem.card.idShort }}</div>
             <div style="height: 150px;">{{ checkItem.name }}</div>
