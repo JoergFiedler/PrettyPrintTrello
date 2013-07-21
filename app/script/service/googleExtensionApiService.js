@@ -7,9 +7,18 @@ angular.module('TrelloPrettyPrint').service('googleExtensionApiService', functio
     });
   }
 
+  function createLinkToExtension() {
+    return $location.protocol() + "://" + $location.host();
+  }
+
   function print(html) {
-    var window = $window.open("about:blank");
+    var styleSheetUrl, window;
+
+    styleSheetUrl = createLinkToExtension() + "/stylesheets/main.css";
+    window = $window.open("about:blank");
+    window.document.write("<html><head><link href='" + styleSheetUrl + "' rel='stylesheet'></head><body>");
     window.document.write(html);
+    window.document.write('</body></html>');
     window.document.close();
     window.print();
   }
@@ -23,6 +32,6 @@ angular.module('TrelloPrettyPrint').service('googleExtensionApiService', functio
   return {
     openInNewTab:    openInNewTab,
     getActiveTabUrl: getActiveTabUrl,
-    print: print
+    print:           print
   }
 });
