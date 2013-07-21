@@ -31,28 +31,31 @@
       </p>
 
       <div class="tpp_box_wrap">
-      	<div data-ng-repeat="list in listsWithCards" class="tpp_listWithCards">
-        <div data-ng-controller="ListViewController">
-          <button data-ng-class="{'tpp_list_opened': activeClass}" class="tpp_button" data-ng-click="toggleShowHide()">Show/Hide</button>
-          <button class="tpp_button" data-ng-click="togglePrintAllNone()">All/None</button>
-          <h3 style="display: inline">{{list.name}}</h3>
+        <div data-ng-repeat="list in listsWithCards" class="tpp_listWithCards">
+          <div data-ng-controller="ListViewController">
+            <button data-ng-class="{'tpp_list_opened': activeClass}"
+                    class="tpp_button"
+                    data-ng-click="toggleShowHide()">Show/Hide</button>
+            <button class="tpp_button"
+                    data-ng-click="togglePrintAllNone()">All/None</button>
+            <h3 style="display: inline">{{list.name}}</h3>
 
-					<hr class="tpp_hide">
-          <div data-ng-hide="hidden">
-            <div data-ng-click="togglePrintCard()" data-ng-controller="CardViewController" data-ng-repeat="card in list.cards" class="tpp_card">
-              <a class="tpp_button on_grey"
-                 data-ng-class="toBePrinted && 'btn-warning' || 'btn-success'">
-                 {{toBePrinted && 'Remove' || 'Add'}}
-              </a>
-              <h4 style="display: inline;">IP-{{card.idShort}}: {{card.name}}</h4>
+            <hr class="tpp_hide">
+            <div data-ng-hide="hidden">
+              <div data-ng-click="togglePrintCard()" data-ng-controller="CardViewController" data-ng-repeat="card in list.cards" class="tpp_card">
+                <a class="tpp_button on_grey"
+                   data-ng-class="toBePrinted && 'btn-warning' || 'btn-success'">
+                  {{toBePrinted && 'Remove' || 'Add'}}
+                </a>
+                <h4 style="display: inline;">IP-{{card.idShort}}: {{card.name}}</h4>
 
-              <p class="small">{{card.desc}}</p>
+                <p class="small">{{card.desc}}</p>
 
-              <span data-ng-show="card.members.length > 0">Owners: {{card.members | initials}}</span>
+                <span data-ng-show="card.members.length > 0">Owners: {{card.members | initials}}</span>
+              </div>
             </div>
           </div>
         </div>
-      	</div>
       </div>
     </div>
   </script>
@@ -88,34 +91,6 @@
             <p style="display: inline;">
               {{checkItem.name}}
             </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </script>
-
-  <script type="text/ng-template" id="/tpp-board-preview.html">
-    <a class="btn btn-link" data-ng-click="print()">Print'em All</a>
-
-    <div class="tpp_print_frame">
-      <div data-ng-repeat="card in itemsToPrint">
-        <div class="tpp_card" style="page-break-inside: avoid; border: 1px solid rgb(128,128,128); margin: 1px; width: 500px; height: 300px; overflow:hidden; position: relative">
-          <div class="tpp_print_card" data-ng-class="{epic: card.isEpic, story: !card.isEpic}">
-            <div style="margin: 10px;">
-              <div>
-                <img data-ng-src="{{ card.qrCodeUrl }}" height="100" width="100"/>
-              </div>
-              <div style="position:absolute; top: 30px; left:120px; width:370px; font-weight: bold;">
-                <span style="font-size: 20px;">{{ card.name | removeHashTags }}</span><br/>
-                <span>IP-{{ card.idShort }}</span>
-              </div>
-
-              <div style="with: 100%; content: ' '; clear: both"/>
-              <div style="height: 120px; overflow: hidden;" data-ng-bind-html-unsafe="card.desc | newlines | removeHashTags"/>
-              <div style="width: 480px; position: absolute; border-top: 1px solid rgb(128,128,128); font-size: 18px; font-weight: bold;">
-                Owner: {{ card.members | initials }}
-              </div>
-            </div>
           </div>
         </div>
       </div>

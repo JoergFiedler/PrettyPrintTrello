@@ -38,6 +38,7 @@ module.exports = function (grunt) {
     copy: {
       chromeExtHtml: {
         files :[
+          {src: 'app/partial/board-preview.html', dest: 'chrome-extension/partial/board-preview.html'},
           {src: 'app/index.html', dest: 'chrome-extension/index.html'},
           {src: 'app/callback.html', dest: 'chrome-extension/callback.html'}
         ]
