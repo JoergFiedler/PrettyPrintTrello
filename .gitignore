@@ -2,6 +2,7 @@ chrome-extension/application.js
 chrome-extension/index.html
 chrome-extension/callback.html
 chrome-extension/partial
+chrome-extension/stylesheets
 components/
 coverage/
 node_modules/
