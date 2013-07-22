@@ -15,10 +15,17 @@ angular.module('TrelloPrettyPrint').controller('BoardViewController', function B
     trelloService.loadListsWithCards(ids.boardId, onSuccessLoadListsWithCards, onError);
   }
 
-  function showPreview() {
+  function showPreview(event, data) {
     $location.path('/board/preview');
   }
 
+  function init() {
+    $scope.$emit('tpp:action', { label: 'Preview', 'event': 'tpp:preview:board' });
+  }
+
   $scope.showPreview = showPreview;
+  $scope.init = init;
+
   $scope.$on("tpp:board:ids", loadListsWithCards);
+  $scope.$on("tpp:preview:board", showPreview);
 });

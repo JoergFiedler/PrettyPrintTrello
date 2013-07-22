@@ -49,10 +49,6 @@ describe('Extension Popup Controller', function() {
       expect(scope.authorize).toBeDefined();
     });
 
-    it('should set scope property print to a function', function() {
-      expect(scope.print).toBeDefined();
-    });
-
     it('should register scope a function to watch activeTabUrl changes', function() {
       expect(scope.$watch).toHaveBeenCalledWith('activeTabUrl', jasmine.any(Function));
     });
@@ -147,13 +143,4 @@ describe('Extension Popup Controller', function() {
       expect(scope.itemsToPrint.length).toEqual(0);
     }));
   });
-
-  describe("function 'print'", function() {
-    it('should call googleExtensionApiService', function() {
-      scope.print();
-
-      expect(googleExtensionApiService.print).toHaveBeenCalled();
-    });
-  });
-
 });

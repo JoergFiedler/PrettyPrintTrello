@@ -3,6 +3,7 @@
 <head>
   <title>Trello Pretty Print</title>
   <link href="http://cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>
   <link href="stylesheets/main.css" rel="stylesheet">
   <style>
     [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -15,20 +16,31 @@
 
 <div class="tpp_container">
 
-  <div data-ng-show="authorized==false">
-    <button class="btn btn-link" data-ng-click="authorize()">Not authorized! Want to get authorized?</button>
+  <div class="tpp_header">
+    <span class="tpp_logo">Trello Pretty Print</span>
+
+    <div data-ng-show="authorized==true" class="tpp_header_right">
+      <button class="tpp_button blue big"
+              data-ng-show="action.label"
+              data-ng-disabled="itemsToPrint.length==0"
+              data-ng-click="sendActionEvent()">
+        {{ action.label }} ({{ itemsToPrint.length }})
+      </button>
+    </div>
+    <div data-ng-show="authorized==false" class="tpp_header_right">
+      <button class="tpp_button blue big" data-ng-click="authorize()">Not authorized! Want to get authorized?</button>
+    </div>
   </div>
 
-  <div data-ng-view="app-view">
+  <div class="tpp_status_bar"> {{ statusBarMessage | removeHashTags }} </div>
 
-  </div>
+  <div data-ng-view="app-view"></div>
 
   <script type="text/ng-template" id="/tpp-board.html">
-    <div data-ng-controller="BoardViewController" class="tpp_box">
-      <p class="tpp_title">
-        <b>{{ itemsToPrint.length }}</b> cards marked for printing.
-        <button class="tpp_button blue" data-ng-disabled="itemsToPrint.length==0" data-ng-click="showPreview()">Preview</button>
-      </p>
+    <div data-ng-show="listsWithCards"
+         data-ng-init="init()"
+         data-ng-controller="BoardViewController"
+         class="tpp_box">
 
       <div class="tpp_box_wrap">
         <div data-ng-repeat="list in listsWithCards"
@@ -66,14 +78,10 @@
   </script>
 
   <script type="text/ng-template" id="/tpp-card.html">
-    <div data-ng-controller="CardViewController" class="tpp_box">
-      <p class="tpp_title">
-        <b>{{ itemsToPrint.length }}</b> cards marked for printing.
-        <button class="tpp_button blue" data-ng-disabled="itemsToPrint.length==0" data-ng-click="showPreview()">Preview</button>
-
-      <h3 data-ng-show="card">IP-{{card.idShort}}: {{card.name}}</h3>
-      </p>
-
+    <div data-ng-show="card"
+         data-ng-controller="CardViewController"
+         data-ng-init="init()"
+         class="tpp_box">
 
       <div class="tpp_box_wrap">
         <div class="tpp_listWithItems"

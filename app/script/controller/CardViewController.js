@@ -1,6 +1,8 @@
 angular.module('TrelloPrettyPrint').controller('CardViewController', function CardViewController($scope, $location, hashTagConverterService, trelloService) {
   "use strict";
 
+  $scope.card = undefined;
+
   function onError(data) {
     console.log('Error while talking to trello:' + data)
   }
@@ -10,7 +12,6 @@ angular.module('TrelloPrettyPrint').controller('CardViewController', function Ca
       $scope.card.members.push(member);
     });
   }
-
 
   function loadMembers() {
     $scope.card.members = [];
@@ -31,7 +32,9 @@ angular.module('TrelloPrettyPrint').controller('CardViewController', function Ca
 
   function onSuccessLoadCard(card) {
     $scope.$apply(function() {
+      debugger;
       $scope.card = card;
+      $scope.$emit('tpp:statusbar:message', "IP-" + card.idShort + ": " + card.name);
     });
   }
 
@@ -73,13 +76,18 @@ angular.module('TrelloPrettyPrint').controller('CardViewController', function Ca
     $location.path('/card/preview');
   }
 
-  $scope.showPreview = showPreview;
+  function init() {
+    $scope.$emit('tpp:action', { label: 'Preview', 'event': 'tpp:preview:card' });
+  }
 
+  $scope.init = init;
+  $scope.showPreview = showPreview;
   $scope.togglePrintCard = togglePrintCard;
 
   $scope.$on("tpp:card:ids", loadCard);
   $scope.$on("tpp:list:print:add", printCard);
   $scope.$on("tpp:list:print:remove", printCard);
+  $scope.$on("tpp:preview:card", showPreview);
 
   $scope.$watch("card", convertHashTags);
   $scope.$watch("card", loadMembers);
