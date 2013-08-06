@@ -11,6 +11,7 @@ $button_hover: #318ec4;
 $text_dark_grey: rgb(57,57,57);
 $epic_color: rgb(201,59,72);
 $story_color: rgb(255,204,0);
+$task_color: $trello_blue;
 
 $default_padding: 8px;
 $border_radius: 3px;
@@ -214,34 +215,44 @@ body {
   .story { border: 10px solid $story_color; }
 }
 
-.tpp_print_check_item {
-  background-color: $white;
-  page-break-inside: avoid;
-  border: 7px solid $trello_border_grey;
-  float: left;
-  width: 275px;
-  height:220px;
+.tpp_print_check_item_border {
+  border: 2px solid $trello_border_grey;
+  width: 280px;
+  height:230px;
   overflow:hidden;
-  position: relative;
+  float: left;
+  page-break-inside: avoid;
+  background-color: $white;
   font-weight: bold;
 
-  .tpp_print_check_item_container {
-    margin: 10px;
+  .tpp_print_check_item {
+    .tpp_print_check_item_container {
+      margin: 5px;
+      width: 250px;
+      height:200px;
+      position: relative;
 
-    .tpp_print_check_item_id {
-      border-bottom: 1px solid $trello_grey;
-      width:100%
-    }
+      .tpp_print_check_item_id {
+        border-bottom: 1px solid $trello_grey;
+        width:100%
+      }
 
-    .tpp_print_check_item_name {
-      height: 150px;
-    }
+      .tpp_print_check_item_name {
+        height: 150px;
+      }
 
-    .tpp_print_check_item_owner {
-      position: absolute;
-      width: 100%;
-      bottom: 10px;
-      border-top: 1px solid $trello_grey;
+      .tpp_print_check_item_owner {
+        position: absolute;
+        width: 100%;
+        bottom: 10px;
+        border-top: 1px solid $trello_grey;
+      }
     }
   }
 }
+
+
+
+.epic { border: 10px solid $epic_color; }
+.story { border: 10px solid $story_color; }
+.task { border: 10px solid $task_color; }
