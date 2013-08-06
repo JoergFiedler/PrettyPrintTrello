@@ -10,4 +10,5 @@ test/test_reports/
 .idea
 *.iml
 .sass-cache
+chrome-extension.zip
 
