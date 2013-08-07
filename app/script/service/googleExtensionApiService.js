@@ -1,4 +1,4 @@
-angular.module('TrelloPrettyPrint').service('googleExtensionApiService', function googleExtensionApiService($window, $location) {
+angular.module('PrettyPrintTrello').service('googleExtensionApiService', function googleExtensionApiService($window, $location) {
   "use strict";
 
   function openInNewTab(url) {

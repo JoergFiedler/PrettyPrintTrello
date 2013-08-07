@@ -1,4 +1,4 @@
-angular.module('TrelloPrettyPrint').controller('BoardViewController', function BoardViewController($scope, $location, trelloService) {
+angular.module('PrettyPrintTrello').controller('BoardViewController', function BoardViewController($scope, $location, trelloService) {
   "use strict";
 
   function onSuccessLoadListsWithCards(listsWithCards) {

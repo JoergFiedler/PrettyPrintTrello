@@ -1,4 +1,4 @@
-angular.module('TrelloPrettyPrint').controller('ListViewController', function ListViewController($scope) {
+angular.module('PrettyPrintTrello').controller('ListViewController', function ListViewController($scope) {
   "use strict";
 
   function toggleShowHide() {

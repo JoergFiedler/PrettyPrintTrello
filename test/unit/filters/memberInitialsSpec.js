@@ -2,7 +2,7 @@ describe("Filter 'initials'", function(){
   var filter;
 
   beforeEach(function() {
-    angular.mock.module('TrelloPrettyPrint');
+    angular.mock.module('PrettyPrintTrello');
   });
 
   beforeEach(inject(function($filter) {

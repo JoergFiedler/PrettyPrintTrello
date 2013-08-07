@@ -3,8 +3,8 @@ describe("In TrelloService", function () {
     options;
 
   beforeEach(function () {
-    angular.mock.module('TrelloPrettyPrint');
-    angular.module('TrelloPrettyPrint').value('trelloOptions', {
+    angular.mock.module('PrettyPrintTrello');
+    angular.module('PrettyPrintTrello').value('trelloOptions', {
       interactive: { anyInteractiveOption: true },
       nonInteractive: { anyNonInteractiveOption: true }
     });

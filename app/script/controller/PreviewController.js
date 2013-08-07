@@ -1,4 +1,4 @@
-angular.module('TrelloPrettyPrint').controller('PreviewController', function PreviewController($scope, googleExtensionApiService) {
+angular.module('PrettyPrintTrello').controller('PreviewController', function PreviewController($scope, googleExtensionApiService) {
   "use strict";
 
   function init() {

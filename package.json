@@ -1,5 +1,5 @@
 {
-  "name": "TrelloPrettyPrint",
+  "name": "PrettyPrintTrello",
   "version": "0.0.1",
   "author" : "John J Murdoch <murdochjohn.github@moumantai.de>",
   "devDependencies": {

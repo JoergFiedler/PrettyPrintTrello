@@ -1,7 +1,7 @@
-describe('In TrelloPrettyPrint module', function () {
+describe('In PrettyPrintTrello module', function () {
 
   beforeEach(function () {
-    angular.mock.module('TrelloPrettyPrint')
+    angular.mock.module('PrettyPrintTrello')
   });
 
   describe('the service: googleExtensionApiService', function () {
@@ -42,7 +42,7 @@ describe('In TrelloPrettyPrint module', function () {
 
     it('should be defined for interactive with values', function () {
       expect(options.interactive).toEqual({
-          name: 'TrelloPrettyPrint',
+          name: 'PrettyPrintTrello',
           interactive: true,
           type: 'redirect',
           scope: { read: true },
@@ -54,7 +54,7 @@ describe('In TrelloPrettyPrint module', function () {
 
     it('should be defined for nonInteractive with values', function () {
       expect(options.nonInteractive).toEqual({
-        name: 'TrelloPrettyPrint',
+        name: 'PrettyPrintTrello',
         interactive: false,
         scope: { read: true },
         expiration: 'never',

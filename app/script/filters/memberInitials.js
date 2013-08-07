@@ -1,4 +1,4 @@
-angular.module('TrelloPrettyPrint').filter('initials', function initials() {
+angular.module('PrettyPrintTrello').filter('initials', function initials() {
 
   function filterMembersWithoutInitials(members) {
     return members.findAll(function(member) {

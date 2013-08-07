@@ -2,7 +2,7 @@ describe("In googleExtensionApiService", function() {
   var service;
 
   beforeEach(function() {
-    angular.mock.module('TrelloPrettyPrint');
+    angular.mock.module('PrettyPrintTrello');
   });
 
   beforeEach(inject(function(googleExtensionApiService) {

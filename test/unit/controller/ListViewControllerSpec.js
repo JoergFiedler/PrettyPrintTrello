@@ -4,7 +4,7 @@ describe('List View Controller', function() {
     scope;
 
   beforeEach(function createMocks() {
-    angular.mock.module('TrelloPrettyPrint');
+    angular.mock.module('PrettyPrintTrello');
   });
 
   beforeEach(inject(function initializeController($controller, $rootScope) {

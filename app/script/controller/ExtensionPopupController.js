@@ -1,4 +1,4 @@
-angular.module('TrelloPrettyPrint').controller('ExtensionPopupController', function ExtensionPopupController($scope, $timeout, $location, $window, trelloService, googleExtensionApiService, options) {
+angular.module('PrettyPrintTrello').controller('ExtensionPopupController', function ExtensionPopupController($scope, $timeout, $location, $window, trelloService, googleExtensionApiService, options) {
   "use strict";
 
   var cardRegex = /.*\/c\/([^/]+)\/([^/]+)*/,

@@ -1,4 +1,4 @@
-angular.module('TrelloPrettyPrint').service('trelloService', function TrelloService($rootScope, $q, trelloOptions) {
+angular.module('PrettyPrintTrello').service('trelloService', function TrelloService($rootScope, $q, trelloOptions) {
   "use strict";
 
   var options;

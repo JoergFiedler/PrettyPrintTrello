@@ -1,6 +1,6 @@
-(function initTrelloPrettyPrintApp() {
+(function initPrettyPrintTrelloApp() {
   'use strict';
-  var appName = 'TrelloPrettyPrint';
+  var appName = 'PrettyPrintTrello';
 
   angular
     .module(appName, [], function ($routeProvider) {

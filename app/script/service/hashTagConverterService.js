@@ -1,4 +1,4 @@
-angular.module('TrelloPrettyPrint').service('hashTagConverterService', function hashTagConverterService() {
+angular.module('PrettyPrintTrello').service('hashTagConverterService', function hashTagConverterService() {
   "use strict";
 
   var epicRegex = /.*#epic*/;

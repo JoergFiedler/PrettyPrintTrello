@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/murdochjohn/TrelloPrettyPrint.png?branch=master)](https://travis-ci.org/murdochjohn/TrelloPrettyPrint)
 
-# TrelloPrettyPrint
+# Pretty Print for Trello
 
 Chrome extension which allows you to print Trello cards and check items easily. First 
 working draft.

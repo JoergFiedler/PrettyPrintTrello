@@ -6,7 +6,7 @@ describe('In CardViewController', function() {
     trelloService;
 
   beforeEach(function createMocks() {
-    angular.mock.module('TrelloPrettyPrint');
+    angular.mock.module('PrettyPrintTrello');
     trelloService = jasmine.createSpyObj('trelloService', ['loadCard', 'loadCheckLists', 'loadMember']);
   });
 

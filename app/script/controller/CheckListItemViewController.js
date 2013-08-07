@@ -1,4 +1,4 @@
-angular.module('TrelloPrettyPrint').controller('CheckListItemViewController', function CheckListItemViewController($scope) {
+angular.module('PrettyPrintTrello').controller('CheckListItemViewController', function CheckListItemViewController($scope) {
   "use strict";
 
   function updateCheckListItemsToPrint() {

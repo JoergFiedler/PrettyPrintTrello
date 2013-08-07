@@ -1,4 +1,4 @@
-angular.module('TrelloPrettyPrint').controller('CardViewController', function CardViewController($scope, $location, hashTagConverterService, trelloService) {
+angular.module('PrettyPrintTrello').controller('CardViewController', function CardViewController($scope, $location, hashTagConverterService, trelloService) {
   "use strict";
 
   function onError(data) {

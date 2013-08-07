@@ -9,7 +9,7 @@ describe('Extension Popup Controller', function() {
     options;
 
   beforeEach(function createMocks() {
-    angular.mock.module('TrelloPrettyPrint');
+    angular.mock.module('PrettyPrintTrello');
     trelloService = jasmine.createSpyObj('trelloService', ['isAuthorized', 'authorize']);
     googleExtensionApiService = jasmine.createSpyObj(
       'googleExtensionApiService', ['openInNewTab', 'getActiveTabUrl', 'print']

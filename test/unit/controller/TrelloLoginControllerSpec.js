@@ -6,7 +6,7 @@ describe('In TrelloLoginController', function () {
     trelloService;
 
   beforeEach(function () {
-    angular.mock.module('TrelloPrettyPrint');
+    angular.mock.module('PrettyPrintTrello');
     trelloService = jasmine.createSpyObj('trelloService', ['isAuthorized', 'authorize']);
   });
 

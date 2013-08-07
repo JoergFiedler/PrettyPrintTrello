@@ -1,4 +1,4 @@
-angular.module('TrelloPrettyPrint').controller('TrelloLoginController', function TrelloLoginController($scope, trelloService) {
+angular.module('PrettyPrintTrello').controller('TrelloLoginController', function TrelloLoginController($scope, trelloService) {
   "use strict";
 
   function isAuthorized() {
