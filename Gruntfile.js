@@ -19,7 +19,8 @@ module.exports = function (grunt) {
           keepalive: true
         }
       }
-    }, test: {
+    },
+    test: {
       unit: 'karma.unit.conf.js'
     },
     autotest: {
@@ -36,7 +37,7 @@ module.exports = function (grunt) {
     	}
   	},
     copy: {
-      chromeExtHtml: {
+      dist: {
         files :[
           {src: 'app/partial/card-preview.html', dest: 'chrome-extension/partial/card-preview.html'},
           {src: 'app/partial/board-preview.html', dest: 'chrome-extension/partial/board-preview.html'},
@@ -46,15 +47,31 @@ module.exports = function (grunt) {
       }
     },
     concat: {
-      chromeExtJs: {
+      pro: {
         dest: 'chrome-extension/application.js',
-        src: [ 'app/**/*.js' ]
+        src: [
+          'app/script/app.js',
+          'app/script/controller/*.js',
+          'app/script/filters/*.js',
+          'app/script/service/*.js',
+          'app/script/app.js'
+        ]
+      },
+      dev: {
+        dest: 'chrome-extension/application.js',
+        src: [
+          'app/script/app.js',
+          'app/script/controller/*.js',
+          'app/script/filters/*.js',
+          'app/script/service/*.js',
+          'app/script/mock/*.js'
+        ]
       }
     },
     watch: {
       scripts: {
         files: ['app/**/*'],
-        tasks: ['copy', 'concat', 'sass'],
+        tasks: ['copy', 'concat:dev', 'sass'],
         options: {
           nospawn: true
         }
@@ -66,11 +83,10 @@ module.exports = function (grunt) {
     util.startKarma.call(util, this.data, true, this.async());
   });
 
-
   grunt.registerMultiTask('autotest', 'Run and watch the unit tests with Karma', function () {
     util.startKarma.call(util, this.data, false, this.async());
   });
 
-  grunt.registerTask('server', ['concat', 'connect:server']);
-  grunt.registerTask('all', ['test', 'sass', 'copy', 'concat']);
+  grunt.registerTask('server', ['concat:dev', 'connect:server']);
+  grunt.registerTask('all', ['test', 'sass', 'copy', 'concat:pro']);
 };

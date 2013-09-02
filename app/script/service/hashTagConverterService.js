@@ -5,7 +5,8 @@ angular.module('PrettyPrintTrello').service('hashTagConverterService', function 
 
 
   function convert(card) {
-    var nameMatch,
+    var
+      nameMatch,
       descMatch;
 
     nameMatch = epicRegex.exec(card.name);
