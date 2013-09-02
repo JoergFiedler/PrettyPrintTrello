@@ -3,6 +3,7 @@ chrome-extension/index.html
 chrome-extension/callback.html
 chrome-extension/partial
 chrome-extension/stylesheets
+bower_components/
 components/
 coverage/
 node_modules/
