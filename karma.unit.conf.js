@@ -5,10 +5,10 @@ files = [
   JASMINE_ADAPTER,
 
   // 3rd party
-  'bower_components/jquery/jquery.js',
-  'bower_components/angular/angular.js',
-  'bower_components/angular-mocks/angular-mocks.js',
-  'bower_components/sugar/release/sugar-full.development.js',
+  'components/jquery/jquery.js',
+  'components/angular/angular.js',
+  'components/angular-mocks/angular-mocks.js',
+  'components/sugar/release/sugar-full.development.js',
   'test/lib/Trello.js',
 
   // app code
