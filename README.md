@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/murdochjohn/TrelloPrettyPrint.png?branch=master)](https://travis-ci.org/murdochjohn/TrelloPrettyPrint)
+[![Build Status](https://travis-ci.org/murdochjohn/PrettyPrintTrello.png?branch=master)](https://travis-ci.org/murdochjohn/PrettyPrintTrello)
 
 # Pretty Print for Trello
 
