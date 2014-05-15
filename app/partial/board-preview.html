@@ -20,8 +20,17 @@
             <div class="tpp_clear_float"></div>
             <div class="description"
                  data-ng-bind-html-unsafe="card.desc | newlines | removeHashTags"></div>
-            <div class="owner">
-              Owner: {{ card.members | initials }}
+
+            <div class="tpp__card--owner">
+              Owner:
+              <strong data-ng-repeat="member in card.members">
+                <img
+                        class="member-avatar" height="30" width="30"
+                        src="https://trello-avatars.s3.amazonaws.com/{{member.avatarHash}}/30.png"
+                        alt="{{member.fullName}} ({{member.initials}})"
+                        title="{{member.fullName}} ({{member.initials}})">
+                {{member.initials}}
+              </strong>
             </div>
           </div>
         </div>
