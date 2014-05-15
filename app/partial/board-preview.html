@@ -6,7 +6,8 @@
       <div data-ng-repeat="card in itemsToPrint"
            class="tpp_print_card_container">
         <div class="tpp_print_card"
-             data-ng-class="{epic: card.isEpic, story: !card.isEpic}">
+             data-ng-class="{epic: card.isEpic, story: !card.isEpic}"
+             data-ng-style="getStoryStyle(card)">
           <div class="tpp_print_card_content">
             <div>
               <img data-ng-src="{{ card.qrCodeUrl }}"/>
