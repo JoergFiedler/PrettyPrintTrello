@@ -5,9 +5,14 @@ angular.module('PrettyPrintTrello').controller('PreviewController', function Pre
     "green": "#34b27d",
     "yellow": "#dbdb57",
     "orange": "#e09952",
-    "red": "#cb4d4d",
-    "purple": "#93c",
-    "blue": "#4d77cb"
+    "red": "#808080",
+    "purple": "#9900CC",
+    "blue": "#4d77cb",
+    "sky":"#3399FF",
+    "lime":"#99FFCC",
+    "pink":"#FF0099",
+    "black":"#000000",
+    "null":"#666666"
   };
 
   function init() {
