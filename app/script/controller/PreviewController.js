@@ -2,15 +2,15 @@ angular.module('PrettyPrintTrello').controller('PreviewController', function Pre
   "use strict";
 
   var labelsToColorMap = {
-    "green": "#34b27d",
-    "yellow": "#dbdb57",
-    "orange": "#e09952",
-    "red": "#808080",
-    "purple": "#9900CC",
-    "blue": "#4d77cb",
-    "sky":"#3399FF",
-    "lime":"#99FFCC",
-    "pink":"#FF0099",
+    "green": "#008000",
+    "yellow": "#FFFF00",
+    "orange": "#FFA500",
+    "red": "#FF0000",
+    "purple": "#800080",
+    "blue": "#0000FF",
+    "sky":"#87CEEB",
+    "lime":"#00FF00",
+    "pink":"#FFC0CB",
     "black":"#000000",
     "null":"#666666"
   };
@@ -24,7 +24,7 @@ angular.module('PrettyPrintTrello').controller('PreviewController', function Pre
   }
 
   function getCardColorByLabel(item) {
-    var firstLabelColor = item.labels.length ? item.labels[0].color : 'yellow';
+    var firstLabelColor = item.labels.length ? item.labels[0].color : 'null';
     return labelsToColorMap[firstLabelColor];
   }
 
