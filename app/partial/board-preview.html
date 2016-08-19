@@ -13,7 +13,7 @@
               <img data-ng-src="{{ card.qrCodeUrl }}"/>
             </div>
             <div class="title">
-              <span class="title_text">{{ card.name | removeHashTags }}</span><br/>
+              <span class="title_text">{{ card.name | removeHashTags | boldTitle }}</span><br/>
               <!--<span>IP-{{ card.idShort }}</span>-->
             </div>
 
