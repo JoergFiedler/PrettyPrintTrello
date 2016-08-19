@@ -14,6 +14,7 @@
             </div>
             <div class="title">
               <span class="title_text">{{ card.name | removeHashTags}}</span><br/>
+              <span>Catégorie(s) : <strong data-ng-repeat="label in card.labels">{{label.name}} . </span>
               <!--<span>IP-{{ card.idShort }}</span>-->
             </div>
 
@@ -23,13 +24,10 @@
                  data-ng-bind-html-unsafe="card.desc | newlines | removeHashTags">
             </div>
             -->
-            <div class="description"
-                 data-ng-bind-html-unsafe="">
-            </div>
+            <div class="description" data-ng-bind-html-unsafe=""></div>
             
-
             <div class="tpp__card--owner">
-              Members:
+              Membre(s):
               <strong data-ng-repeat="member in card.members">
                 <img
                         class="member-avatar" height="30" width="30"
