@@ -2,17 +2,17 @@ angular.module('PrettyPrintTrello').controller('PreviewController', function Pre
   "use strict";
 
   var labelsToColorMap = {
-    "green": "#008000",
-    "yellow": "#FFFF00",
-    "orange": "#FFA500",
-    "red": "#FF0000",
-    "purple": "#800080",
-    "blue": "#0000FF",
-    "sky":"#87CEEB",
-    "lime":"#32CD32",
-    "pink":"#FFC0CB",
+    "green": "#61BD4F",
+    "yellow": "#F2D600",
+    "orange": "#FFAB4A",
+    "red": "#EB5A46",
+    "purple": "#C377E0",
+    "blue": "#0079BF",
+    "sky":"#00C2E0",
+    "lime":"#51E898",
+    "pink":"#FF80CE",
     "black":"#000000",
-    "null":"#717171"
+    "null":"#C4C9CC"
   };
 
   function init() {
