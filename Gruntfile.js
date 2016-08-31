@@ -7,6 +7,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -88,5 +89,5 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('server', ['concat:dev', 'connect:server']);
-  grunt.registerTask('all', ['test', 'sass', 'copy', 'concat:pro']);
+  grunt.registerTask('all', ['sass', 'copy', 'concat:pro']);
 };
